@@ -1,0 +1,66 @@
+.container {
+  width: 450px;
+  margin: 0 auto;
+  border: 1px solid darkgrey;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.Header {
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.Header_TeamLeft {
+  flex: 1 1 50%;
+  text-align: center;
+  justify-content: center;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+.Header_TeamRight {
+  flex: 1 1 50%;
+  text-align: center;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.Header_Scores {
+  flex: 1 0 auto;
+}
+
+.Scores {
+  display: inline-table;
+  table-layout: fixed;
+}
+
+.Scores_Score {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50%;
+  padding-right: 2px;
+}
+
+.Score {
+  display: block;
+  line-height: 1.8rem;
+  font-size: 1.2rem;
+  color: #333;
+  background-color: lightgray;
+  padding: 0 7px;
+  min-width: 1.5rem;
+  text-align: center;
+  border-radius: 1px;
+}
+
+.Winner {
+  color: mediumseagreen;
+}
+

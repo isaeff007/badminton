@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="Header">
+    <div class="Header_TeamLeft">
+<!--      <div class="Team_Name">{{game.winner.playerId}}</div>-->
+      <img mat-card-avatar src="assets/img/{{game.winner.playerId}}.png" class="player-header-image">
+    </div>
+    <div class="Header_Scores">
+      <div class="Scores">
+        <div class="Scores_Score">
+          <div class="Score Winner">{{game.winner.points}}</div>
+        </div>
+        <div class="Scores_Score">
+          <div class="Score Looser">{{game.looser.points}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="Header_TeamRight">
+      <img mat-card-avatar src="assets/img/{{game.looser.playerId}}.png" class="player-header-image">
+<!--      <div class="Team_Name">{{game.looser.playerId}}</div>-->
+    </div>
+  </div>
+</div>
