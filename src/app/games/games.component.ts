@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameDay} from '../models/game';
 import {GamedataService} from '../shared/gamedata.service';
-import {Player} from '../models/player';
+import {games} from '../shared/data';
 
 @Component({
   selector: 'app-games',
@@ -16,12 +16,16 @@ export class GamesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.dataService.getGameDays().subscribe(data => {
-    //   this.gameDays = data.map(e => {
-    //     return e.payload.doc.data() as GameDay;
-    //   });
-    // });
-    this.gameDays = this.dataService.getGameDays();
+    this.dataService.getGameDays().subscribe(data => {
+      this.gameDays = data.map(e => {
+        return e.payload.doc.data() as GameDay;
+      });
+    });
+    // this.gameDays = this.dataService.getGameDays();
+  }
+
+  addGameDays() {
+    games.forEach(gameDay => this.dataService.createGameDay(gameDay));
   }
 
 }

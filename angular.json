@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "badminton"
+  "defaultProject": "badminton",
+  "cli": {
+    "analytics": false
+  }
 }

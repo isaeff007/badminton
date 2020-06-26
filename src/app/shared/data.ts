@@ -1,5 +1,5 @@
 import {Player} from '../models/player';
-import {Game, GameDay, GameType} from '../models/game';
+import {GameDay, GameType} from '../models/game';
 
 export const players: Player[] =
 
@@ -17,8 +17,8 @@ export const Pls = {
   NK: 'nk',
   EW: 'ew',
   KS: 'ks',
-  FW: 'FW',
-  FK: 'FK'
+  FW: 'fw',
+  FK: 'fk'
 };
 
 
@@ -41,6 +41,16 @@ export const games: GameDay[] = [
       {type: GameType.PAIR, winner: {playerId: Pls.FK, points: 21}, looser: {playerId: Pls.FW, points: 17}},
       {type: GameType.PAIR, winner: {playerId: Pls.FK, points: 21}, looser: {playerId: Pls.FW, points: 17}},
       {type: GameType.PAIR, winner: {playerId: Pls.FK, points: 21}, looser: {playerId: Pls.FW, points: 16}},
+    ]
+  },
+  {
+    date: '2020.06.20',
+    games: [
+      {type: GameType.PAIR, winner: {playerId: Pls.FK, points: 21}, looser: {playerId: Pls.FW, points: 12}},
+      {type: GameType.PAIR, winner: {playerId: Pls.FW, points: 25}, looser: {playerId: Pls.FK, points: 23}},
+      {type: GameType.PAIR, winner: {playerId: Pls.FK, points: 25}, looser: {playerId: Pls.FW, points: 17}},
+      {type: GameType.PAIR, winner: {playerId: Pls.FW, points: 21}, looser: {playerId: Pls.FK, points: 18}},
+      {type: GameType.PAIR, winner: {playerId: Pls.FW, points: 12}, looser: {playerId: Pls.FK, points: 10}},
     ]
   }
 

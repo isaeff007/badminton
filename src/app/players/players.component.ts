@@ -15,12 +15,12 @@ export class PlayersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.dataService.getPlayers().subscribe(data => {
-    //   this.players = data.map(e => {
-    //     return e.payload.doc.data() as Player;
-    //   });
-    // });
-    this.players = this.dataService.getPlayers();
+    this.dataService.getPlayers().subscribe(data => {
+      this.players = data.map(e => {
+        return e.payload.doc.data() as Player;
+      });
+    });
+    // this.players = this.dataService.getPlayers();
   }
 
   addPlayer() {
