@@ -7,8 +7,7 @@
       <app-game [game]="game"></app-game>
     </div>
   </mat-card-content>
-  <mat-card-footer *ngIf="false">
-    <p>{{resultGame.winner.playerId}}{{resultGame.winner.points}}</p>
-    <p>{{resultGame.looser.playerId}}{{resultGame.looser.points}}</p>
+  <mat-card-footer *ngIf="result">
+       {{result | json}}
   </mat-card-footer>
 </mat-card>

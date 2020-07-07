@@ -1,5 +1,5 @@
 <section class="card-container">
-  <div *ngFor="let gameDay of gameDays">
+  <div *ngFor="let gameDay of gameDays$ | async">
     <app-game-day [gameDay]="gameDay"></app-game-day>
   </div>
 </section>
