@@ -1,6 +1,6 @@
 <mat-card class='game-day-card'>
   <mat-card-header>
-    <mat-card-title class="game-date">{{gameDay.date | date: 'mediumDate':'+0200': 'ru'}}</mat-card-title>
+    <mat-card-title><div class="game-date">{{gameDay.date | date: 'mediumDate':'+0200': 'ru'}}</div></mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div *ngFor="let game of gameDay.games">
@@ -8,6 +8,8 @@
     </div>
   </mat-card-content>
   <mat-card-footer *ngIf="result">
-       {{result | json}}
+    <img mat-card-avatar src="assets/img/{{result.winnerId}}.png" class="player-header-image">
+     <div class="result-score">{{result.winnerPoints}} : {{result.looserPoints}} </div>
+    <img mat-card-avatar src="assets/img/{{result.looserId}}.png" class="player-header-image">
   </mat-card-footer>
 </mat-card>

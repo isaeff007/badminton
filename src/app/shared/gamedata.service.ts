@@ -33,7 +33,9 @@ export class GamedataService {
   getGameDays(): Observable<GameDay[]> {
     return this.firestore.collection(Collection.GAMEDAYS).snapshotChanges()
       .pipe(
-        map(dca => dca.map(e => e.payload.doc.data() as GameDay).sort(this.compareByDate),
+        map(dca =>
+          dca.map(e => e.payload.doc.data() as GameDay)
+            .sort(this.compareByDate),
         )
       );
     // return games;
