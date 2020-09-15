@@ -8,7 +8,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 
 // the second parameter 'fr-FR' is optional

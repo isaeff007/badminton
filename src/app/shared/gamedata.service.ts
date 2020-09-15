@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Player} from '../models/player';
-import {players} from './data';
-import {GameDay} from '../models/game';
-import {Observable} from 'rxjs';
+import {games, players} from './data';
+import {Game, GameDay, PlayerPoints, PlayerWins} from '../models/game';
+import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export enum Collection {
@@ -38,7 +38,6 @@ export class GamedataService {
             .sort(this.compareByDate),
         )
       );
-    // return games;
   }
 
   private compareByDate(gameDay1: GameDay, gameDay2: GameDay): number {
@@ -53,6 +52,37 @@ export class GamedataService {
 
   createGameDay(gameDay: GameDay) {
     return this.firestore.collection(Collection.GAMEDAYS).add(gameDay);
+  }
+
+  getUserWins(userId: string): Observable<PlayerWins> {
+    let wins = 0;
+    games.forEach(gameDay => {
+      wins += gameDay.games.filter(game => game.winner.playerId === userId).length;
+    });
+    console.log(userId, wins);
+    return of({playerId: userId, playerWins: wins});
+  }
+
+  // get all points for player
+  getUserPoints(userId: string): Observable<PlayerPoints> {
+    const winnerPoints = this.getUserPointsByType(userId, 'winner');
+    const looserPoints = this.getUserPointsByType(userId, 'looser');
+    const allPoints = winnerPoints + looserPoints;
+    return of({winnerPoints, looserPoints, allPoints});
+  }
+
+  private getUserPointsByType(userId: string, pointType: 'winner' | 'looser'): number {
+    let userPoints = 0;
+
+    const sumPoints = (gamesToSum: Game[], key: string) => {
+      return gamesToSum.reduce((prev, cur) => prev + cur[key].points, 0);
+    };
+
+    games.forEach(gameDay => {
+      userPoints += sumPoints(gameDay.games.filter(game => game[pointType].playerId === userId), pointType);
+    });
+
+    return userPoints;
   }
 
 }

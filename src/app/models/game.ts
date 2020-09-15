@@ -19,4 +19,15 @@ export interface GamePlayer {
   points: number;
 }
 
+export interface PlayerWins {
+  playerId: string;
+  playerWins: number;
+}
+
+export interface PlayerPoints {
+  winnerPoints: number;
+  looserPoints: number;
+  allPoints: number;
+}
+
 
