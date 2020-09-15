@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'gamedays', component: GamesComponent},
   {path: 'players', component: PlayersComponent},
   {path: 'stats', component: StatsComponent},
-  {path: '', redirectTo: 'players', pathMatch: 'full'},
+  {path: '', redirectTo: 'stats', pathMatch: 'full'},
 ];
 
 

@@ -1,24 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {GameDay} from '../models/game';
+import {Component} from '@angular/core';
 import {GamedataService} from '../shared/gamedata.service';
 import {games} from '../shared/data';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.css']
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent {
 
-  gameDays$: Observable<GameDay[]>;
+  gameDays$ = this.dataService.getGameDays();
 
   constructor(private dataService: GamedataService) {
-  }
-
-  ngOnInit(): void {
-    this.gameDays$ = this.dataService.getGameDays();
-    // this.gameDays = this.dataService.getGameDays();
   }
 
   addGameDays() {
