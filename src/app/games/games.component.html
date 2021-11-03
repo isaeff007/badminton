@@ -3,4 +3,4 @@
     <app-game-day [gameDay]="gameDay"></app-game-day>
   </div>
 </section>
-<!--<button (click)="addGameDays()" mat-button color="primary">Add all games</button>-->
+<button *ngIf="isDevModeAk()" (click)="addGameDays()" mat-button color="primary">Add last games</button>

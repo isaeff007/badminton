@@ -1,0 +1,10 @@
+<mat-card class='game-day-card'>
+  <mat-card-header>
+    <mat-card-title><div class="game-date">{{gameDay.date | date: 'mediumDate':'+0200': 'ru'}}</div></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="result-row">
+    <img mat-card-avatar src="assets/img/{{result[0].playerId}}.png" class="player-header-image">
+    <div class="result-score">{{result[0].playerWins}} : {{result[1].playerWins}} </div>
+    <img mat-card-avatar src="assets/img/{{result[1].playerId}}.png" class="player-header-image">
+  </mat-card-content>
+</mat-card>

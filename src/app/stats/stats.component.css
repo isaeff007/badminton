@@ -1,11 +1,26 @@
-section {
-  margin-top: 2rem;
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
-app-stats-card {
-  flex: 0 0 20%;
-  margin-right: 4rem;
+section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+@media (min-width: 1024px) {
+  section {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+section > * {
+  margin: 2rem;
+}
+
+

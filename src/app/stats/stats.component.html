@@ -1,5 +1,11 @@
-<section>
-  <app-stats-card [playerId]="playerIds.FW"></app-stats-card>
-  <app-stats-card [playerId]="playerIds.FK"></app-stats-card>
-</section>
-
+<div class="container">
+  <section>
+    <app-stats-card [playerId]="playerIds.FW"></app-stats-card>
+    <app-stats-card [playerId]="playerIds.FK"></app-stats-card>
+  </section>
+  <section>
+    <div *ngFor="let gameDay of gameDays$ | async">
+      <app-game-day-result [gameDay]="gameDay"></app-game-day-result>
+    </div>
+  </section>
+</div>

@@ -7,6 +7,7 @@ import {GameComponent} from './games/game/game.component';
 import {GameDayComponent} from './games/game-day/game-day.component';
 import {StatsComponent} from './stats/stats.component';
 import {StatsCardComponent} from './stats/stats-card/stats-card.component';
+import {GameDayResultComponent} from './games/game-day-result/game-day-result.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,8 @@ const routes: Routes = [
   {path: 'players', component: PlayersComponent},
   {path: 'stats', component: StatsComponent},
   {path: '', redirectTo: 'stats', pathMatch: 'full'},
+  {path: 'stats', redirectTo: '', pathMatch: 'full'},
+
 ];
 
 
@@ -25,6 +28,6 @@ export class AppRoutingModule {
 }
 
 export const appRoutingComponents = [GamesComponent, GameDayComponent, GameComponent, PlayersComponent, PlayerComponent,
-  StatsComponent, StatsCardComponent];
+  StatsComponent, StatsCardComponent, GameDayResultComponent];
 
 

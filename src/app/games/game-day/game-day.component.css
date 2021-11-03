@@ -22,3 +22,10 @@ mat-card-footer {
   justify-content: space-evenly;
   align-items: center;
 }
+
+.result-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+

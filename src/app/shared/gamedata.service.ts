@@ -4,7 +4,6 @@ import {Player} from '../models/player';
 import {games, players} from './data';
 import {Game, GameDay, PlayerPoints, PlayerWins} from '../models/game';
 import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 export enum Collection {
   PLAYERS = 'players',
@@ -31,13 +30,15 @@ export class GamedataService {
 
   // convert the firebase collection to expected game day array sorted by date
   getGameDays(): Observable<GameDay[]> {
-    return this.firestore.collection(Collection.GAMEDAYS).snapshotChanges()
-      .pipe(
-        map(dca =>
-          dca.map(e => e.payload.doc.data() as GameDay)
-            .sort(this.compareByDate),
-        )
-      );
+    // return this.firestore.collection(Collection.GAMEDAYS).snapshotChanges()
+    //   .pipe(
+    //     map(dca =>
+    //       dca.map(e => e.payload.doc.data() as GameDay)
+    //         .sort(this.compareByDate),
+    //     )
+    //   );
+    // to display without delay on mobile devices
+    return of(games.sort(this.compareByDate));
   }
 
   private compareByDate(gameDay1: GameDay, gameDay2: GameDay): number {
@@ -61,6 +62,30 @@ export class GamedataService {
     });
     console.log(userId, wins);
     return of({playerId: userId, playerWins: wins});
+  }
+
+  getUserDaysWon(userId: string): Observable<PlayerWins> {
+   let daysWon = 0;
+   games.forEach(gameDay => {
+      let dayWins = 0;
+      let dayLost = 0;
+      dayWins += gameDay.games.filter(game => game.winner.playerId === userId).length;
+      dayLost += gameDay.games.filter(game => game.looser.playerId === userId).length;
+      // draw counted as a win
+      if (dayWins >= dayLost) {
+        daysWon ++;
+      }
+    });
+   return of({playerId: userId, playerWins: daysWon});
+
+  }
+
+
+  getGameDayResult(gameDay: GameDay): PlayerWins[] {
+    const [p1, p2] = [gameDay.games[0].winner.playerId, gameDay.games[0].looser.playerId];
+    const p1Wins = gameDay.games.filter(game => game.winner.playerId === p1).length;
+    const p2Wins = gameDay.games.filter(game => game.winner.playerId === p2).length;
+    return ([{playerId: p1, playerWins: p1Wins}, {playerId: p2, playerWins: p2Wins}]);
   }
 
   // get all points for player

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {PlayerPoints, PlayerWins} from '../models/game';
+import {GameDay, PlayerPoints, PlayerWins} from '../models/game';
 import {GamedataService} from '../shared/gamedata.service';
 import {Pls} from '../shared/data';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-stats',
@@ -17,8 +18,21 @@ export class StatsComponent implements OnInit {
   playerPointsFW$: Observable<PlayerPoints>;
   playerPointsFK$: Observable<PlayerPoints>;
 
+  gameDays$ = this.dataService.getGameDays().pipe(
+    map(gameDays => gameDays.sort(this.compareByDateDesc))
+  );
 
   constructor(private dataService: GamedataService) {
+  }
+
+  private compareByDateDesc(gameDay1: GameDay, gameDay2: GameDay): number {
+    if (gameDay1.date < gameDay2.date) {
+      return 1;
+    }
+    if (gameDay1.date > gameDay2.date) {
+      return -1;
+    }
+    return 0;
   }
 
   ngOnInit(): void {

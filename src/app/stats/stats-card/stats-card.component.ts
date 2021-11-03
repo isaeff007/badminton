@@ -14,6 +14,7 @@ export class StatsCardComponent implements OnInit {
 
 
   numberOfWins$: Observable<PlayerWins>;
+  numberOfDaysWon$: Observable<PlayerWins>;
 
   playerPoints$: Observable<PlayerPoints>;
 
@@ -23,8 +24,8 @@ export class StatsCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.numberOfWins$ = this.dataService.getUserWins(this.playerId);
+    this.numberOfDaysWon$ = this.dataService.getUserDaysWon(this.playerId);
     this.playerPoints$ = this.dataService.getUserPoints(this.playerId);
-
   }
 
 }

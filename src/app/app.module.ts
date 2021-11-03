@@ -10,15 +10,17 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import localeDe from '@angular/common/locales/de';
 
 // the second parameter 'fr-FR' is optional
 registerLocaleData(localeRu);
+registerLocaleData(localeDe);
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    appRoutingComponents,
+    appRoutingComponents    ,
   ],
   imports: [
     BrowserModule,
